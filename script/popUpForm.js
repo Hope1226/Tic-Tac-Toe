@@ -1,7 +1,6 @@
 const newGameBtn = document.querySelector('#newGameBtn');
 const popUpContainer = document.querySelector('.popup-form');
 const formCloseBtn = document.querySelector('#formClose');
-const body = document.querySelector('body');
 const wrapper = document.querySelector('main');
 
 newGameBtn.addEventListener('click', ()=> {

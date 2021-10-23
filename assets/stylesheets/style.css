@@ -103,6 +103,7 @@ body header ul a {
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   padding: 20px;
+  overflow-y: scroll;
   z-index: 999;
 }
 

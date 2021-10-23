@@ -9,52 +9,63 @@ const dataPlyOneName = document.querySelector('#firstPlyName');
 const dataPlyOneSymbol = document.querySelector('#firstPlySymbol');
 const dataPlyTwoName = document.querySelector('#secondPlyName');
 const dataPlyTwoSymbol = document.querySelector('#secondPlySymbol');
+const boardContainer = document.querySelector('.board');
+
 
 
 const createPlayer = (name, symbol) => {
   const playerScore = 0;
+
   displayPlayerData = (disName, disSymbol, disScore) => {
     disName.textContent = name;
     disSymbol.textContent = symbol;
     disScore.textContent = playerScore;
   }
-  return {symbol, playerScore, displayPlayerData}
+  return {name, symbol, playerScore, displayPlayerData}
 }
 
-const game =(()=> {
-  let board = [
+const game =((player1, player2, currentPlayer)=> {
+  const board = [
     " ", " ", " ",
     " ", " ", " ",
     " ", " ", " ",
   ];
 
-  const player1 = createPlayer();
-  const player2 = createPlayer();
 
 
-
-
-  setUpGame = () => {
-
-   
+  const displayBoard = () => {
+    for (let i = 0; i < board.length; i++){
+      boardContainer.innerHTML += `
+      <div class="cells cell-1" value="${i}">${board[i]}</div>`
+    }
   }
 
-  return { board, player1, player2 }
- 
 
+
+  
+   
+
+  return { board, player1, player2, currentPlayer, displayBoard}
 })();
-
 
 
 gameForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  game.player1.name = dataPlyOneName.value; 
-  game.player1.symbol = dataPlyOneSymbol.value;
-  game.player2.name = dataPlyTwoName.value; 
-  game.player2.symbol = dataPlyTwoSymbol.value;
+  game.player1 = createPlayer(dataPlyOneName.value, dataPlyOneSymbol.value)
+  game.player2 = createPlayer(dataPlyTwoName.value, dataPlyTwoSymbol.value);
 
   game.player1.displayPlayerData(playerOneName, playerOneSymbol, playerOneScore);
   game.player2.displayPlayerData(playerTwoName, playerTwoSymbol, playerTwoScore);
+  game.currentPlayer = game.player1;
+  game.switch = () => {
+    if (game.currentPlayer == game.player1){
+      game.currentPlayer = game.player2
+    } else {
+      game.currentPlayer = game.player1
+    }
+  }
+  game.displayBoard();
+  game.boardCells = boardContainer.querySelectorAll('.cells');
   gameForm.reset();
 
   popUpContainer.style.display = 'none';

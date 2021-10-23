@@ -3,6 +3,7 @@ const popUpContainer = document.querySelector('.popup-form');
 const formCloseBtn = document.querySelector('#formClose');
 const wrapper = document.querySelector('main');
 
+
 newGameBtn.addEventListener('click', ()=> {
   popUpContainer.style.display = 'grid';
   wrapper.style.background = "black"

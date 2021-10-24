@@ -24,29 +24,40 @@ const createPlayer = (name, symbol) => {
   return {name, symbol, playerScore, displayPlayerData}
 }
 
-const game =((player1, player2, currentPlayer)=> {
+
+
+const game =((player1, player2, currentPlayer, boardCells)=> {
   const board = [
     " ", " ", " ",
     " ", " ", " ",
     " ", " ", " ",
   ];
 
-
-
   const displayBoard = () => {
     for (let i = 0; i < board.length; i++){
       boardContainer.innerHTML += `
-      <div class="cells cell-1" value="${i}">${board[i]}</div>`
-    }
-  }
+      <div class="cells cell-1" id="${i}">${board[i]}</div>`
+    };
+  };
 
-
+  const updateBoard = (elements, symbol) =>{
+    elements.forEach(cell => {
+    cell.addEventListener('click', (e)=>{
+        game.board[e.target.id] = symbol
+        e.target.innerHTML = symbol;
+        });
+    });
+  };
 
   
-   
 
-  return { board, player1, player2, currentPlayer, displayBoard}
+
+  return { board, player1, player2, currentPlayer,displayBoard, boardCells, updateBoard}
 })();
+
+
+
+
 
 
 gameForm.addEventListener('submit', (event) => {
@@ -66,6 +77,8 @@ gameForm.addEventListener('submit', (event) => {
   }
   game.displayBoard();
   game.boardCells = boardContainer.querySelectorAll('.cells');
+  game.updateBoard(game.boardCells);
+
   gameForm.reset();
 
   popUpContainer.style.display = 'none';

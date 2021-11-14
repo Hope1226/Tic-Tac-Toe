@@ -6,67 +6,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/stylesheets/style.css">
   <link rel="shortcut icon" href="#">
-  <script src="script/main.js"></script>
+  <script src="script/main.js" defer></script>
+  <script src="script/popUpForm.js" defer></script>
   <title>Tic-Tac-Toe</title>
 </head>
 <body>
-  <header>
-    <h1>Old Simple CLassic Tic Tac Toe</h1>
-    <nav>
-      <ul>
-        <li><a href="#" id="newGameBtn">New Game</a></li>
-        <li><a href="#" id="resetBtn">Restart</a></li>
-      </ul>
-    </nav>
-  </header>
-  <section class="game-container">
-    <section class="player-section">
-      <h2>The player Name: <span id="playerOneName"></span>  </h2>
-      <p>Symbol: <span id="playerOneSymbol"></span> </p>
-      <p>Score: <span id="playerOneScore"></span></p>
+  <main class="wrapper">
+    <header>
+      <h1>Old Simple CLassic Tic Tac Toe</h1>
+      <nav>
+        <ul>
+          <li><a href="#" id="newGameBtn">New Game</a></li>
+          <li><a href="#" id="resetBtn">Restart</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="game-container">
+      <section class="player-section">
+        <h2>The player Name: <span id="playerOneName"></span>  </h2>
+        <p>Symbol: <span id="playerOneSymbol"></span> </p>
+        <p>Score: <span id="playerOneScore"></span></p>
+      </section>
+      <section class="gameBoard">
+        <div class="board">
+      
+        </div>
+      </section>
+      <section class="player-section">
+        <h2>The player Name: <span id="playerTwoName"></span>  </h2>
+        <p>Symbol: <span id="playerTwoSymbol"></span> </p>
+        <p>Score: <span id="playerTwoScore"></span></p>
+      </section>
     </section>
-    <section class="gameBoard">
-      <div class="board">
-        <div class="cells cell-1"></div>
-        <div class="cells cell-2"></div>
-        <div class="cells cell-3"></div>
-        <div class="cells cell-4"></div>
-        <div class="cells cell-5"></div>
-        <div class="cells cell-6"></div>
-        <div class="cells cell-7"></div>
-        <div class="cells cell-8"></div>
-        <div class="cells cell-9"></div>
-      </div>
+ </main>
+    <section class="popup-form">
+      <a id="formClose">X</a>
+      <form action="#" id="gameForm">
+        <fieldset class="form-info">
+            <label for="firstPlyName">First Player's name</label>
+            <input type="text" id="firstPlyName" name="firstPlyName" placeholder="e.g John">
+            <label for="firstPlySymbol">First players Choise</label>
+            <select name="firstPlySymbol" id="firstPlySymbol">
+              <option value="X">X</option>
+              <option value="O">O</option>
+            </select>
+            <label for="secondPlyName">Second Player's name</label>
+            <input type="text" id="secondPlyName" name="secondPlyName" placeholder="e.g John">
+            <label for="secondPlySymbol">Second players Choise</label>
+            <select name="secondPlySymbol" id="secondPlySymbol">
+              <option value="X">X</option>
+              <option value="O">O</option>
+            </select>
+        </fieldset>
+        <fieldset class="form-acction">
+          <button type="submit">Les's go!</button>
+        </fieldset>
+      </form>
     </section>
-    <section class="player-section">
-      <h2>The player Name: <span id="playerTwoName"></span>  </h2>
-      <p>Symbol: <span id="playerTwoSymbol"></span> </p>
-      <p>Score: <span id="playerTwoScore"></span></p>
-    </section>
-  </section>
-  <section class="popup-form">
-    <a id="formClose">X</a>
-    <form action="#" id="gameForm">
-      <fieldset class="form-info">
-          <label for="firstPlyName">First Player's name</label>
-          <input type="text" id="firstPlyName" name="firstPlyName" placeholder="e.g John">
-          <label for="firstPlySymbol">First players Choise</label>
-          <select name="firstPlySymbol" id="firstPlySymbol">
-            <option value="X">X</option>
-            <option value="O">O</option>
-          </select>
-          <label for="secondPlyName">Second Player's name</label>
-          <input type="text" id="secondPlyName" name="secondPlyName" placeholder="e.g John">
-          <label for="secondPlySymbol">Second players Choise</label>
-          <select name="secondPlySymbol" id="secondPlySymbol">
-            <option value="X">X</option>
-            <option value="O">O</option>
-          </select>
-      </fieldset>
-      <fieldset class="form-acction">
-        <button type="submit">Les's go!</button>
-      </fieldset>
-    </form>
-  </section>
 </body>
 </html>

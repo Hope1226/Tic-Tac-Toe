@@ -16,6 +16,10 @@ html {
 
 body {
   background: lightblue url(../images/bg-images/main-bg.jpg) repeat;
+  
+}
+
+.wrapper {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr;
@@ -99,6 +103,8 @@ body header ul a {
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   padding: 20px;
+  overflow-y: scroll;
+  z-index: 999;
 }
 
 #formClose {
@@ -137,3 +143,4 @@ body header ul a {
 .popup-form form > * button:hover {
   transform: scale(1.05);
 }
+

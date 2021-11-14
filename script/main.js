@@ -26,12 +26,29 @@ const createPlayer = (name, symbol) => {
 
 
 
-const game =((player1, player2, currentPlayer, boardCells)=> {
+const game =(() => {
+
+let counter = 0;
+let player1;
+let player2;
+ 
+
   const board = [
     " ", " ", " ",
     " ", " ", " ",
     " ", " ", " ",
   ];
+
+  let currentPlayer;
+
+  const assignCurrentPlayer = () => {
+    currentPlayer = player1
+  }
+
+
+  const cells = () => {
+      return  document.querySelectorAll('.cells');;
+  };
 
   const displayBoard = () => {
     for (let i = 0; i < board.length; i++){
@@ -49,16 +66,16 @@ const game =((player1, player2, currentPlayer, boardCells)=> {
     });
   };
 
+  const emptyBoard = () => {
+    for (let i = 0; i < board.length; i++){
+      board[i] = " ";
+    }
+  }
   
 
 
-  return { board, player1, player2, currentPlayer,displayBoard, boardCells, updateBoard}
+  return { board, player1, player2, currentPlayer, displayBoard, cells, updateBoard, assignCurrentPlayer}
 })();
-
-
-
-
-
 
 gameForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -67,17 +84,7 @@ gameForm.addEventListener('submit', (event) => {
 
   game.player1.displayPlayerData(playerOneName, playerOneSymbol, playerOneScore);
   game.player2.displayPlayerData(playerTwoName, playerTwoSymbol, playerTwoScore);
-  game.currentPlayer = game.player1;
-  game.switch = () => {
-    if (game.currentPlayer == game.player1){
-      game.currentPlayer = game.player2
-    } else {
-      game.currentPlayer = game.player1
-    }
-  }
   game.displayBoard();
-  game.boardCells = boardContainer.querySelectorAll('.cells');
-  game.updateBoard(game.boardCells);
 
   gameForm.reset();
 
